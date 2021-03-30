@@ -25,6 +25,11 @@ meals = (
     ('Lunch','Lunch'),
     ('Dinner','Dinner'),
 )
+amounts = (
+    ('3', '3 Recipes'),
+    ('5', '5 Recipes'),
+    ('10', '10 Recipes'),
+)
         
 class MealPlanForm (forms.Form):
     name = forms.CharField(label="Meal Name")
@@ -35,6 +40,7 @@ class SearchToolForm (forms.Form):
     price_filter = forms.CharField(widget=forms.Select(choices=price_range), required=False)
     name = forms.CharField(label="Name", required=False)
     ingredients = forms.CharField(label="Ingredients",widget=forms.Textarea(), required=False)
+    amountRecipes = forms.CharField(label='Amount of Recipes', widget=forms.Select(choices= amounts))
 
 class RecipeSubmissionForm (forms.Form):
     #cost = forms.CharField(widget=forms.Select(choices=price_range))
@@ -95,12 +101,12 @@ class FindRecipeDetailsForOneRecipe ():
 #Class to find the details of the returned recipes based on the user's input
 class FindRecipeDetails():
     @staticmethod
-    def FindRecipe(recipes):
+    def FindRecipe(recipes, amountRecipes):
         i = 0
         read = open("display/DataBase.txt", "r")
         for line in read:
             if '*' in line:
-                if line.strip('* ').strip('\n') in recipes[i] and i < 5: #checks to see if the current line in the database matches a recipe in the list and makes sure it is only checking the top 3 results
+                if line.strip('* ').strip('\n') in recipes[i] and i < int(float(amountRecipes)): #checks to see if the current line in the database matches a recipe in the list and makes sure it is only checking the top 3 results
                     outputDetails = open('display/Output.txt', 'a')
                     outputDetails.write(line.strip('* ')) #strip the key symbol off the recipe's name in the database
                     outputDetails.write(next(read).strip('& ')) #strip the key symbol off the recipe's ingredients in the database
