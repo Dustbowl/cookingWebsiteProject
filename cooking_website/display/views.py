@@ -3,13 +3,23 @@ from django.http import HttpResponse
 import json
 from .models import MealPlanModification, FindRecipeDetailsForOneRecipe, FindRecipeDetails, SearchToolForm, RecipeSubmissionForm, MealPlanForm, SearchEngine, RecipeSubmissionOutput
 import shutil
-#import re
 from .meal_plan import daily_plan, daily_meals
-#from .SearchEngine import SearchEngine
 
+# views.py includes functions that take web requests and returns web responses
+
+
+# Developed by Khanh Vu
+# This function responds to "GET / HTTP/1.1" request to display the Homepage.
 def Homepage(request):
     return render(request,'display/homepage.html/')
 
+
+# Developed by Khanh Vu
+# This function responds to both "GET /search HTTP/1.1" and "POST /search HTTP/1.1" requests, 
+# if request method is POST and form is valid, it'll read price_filter, name and ingredients,
+# then call SearchEngine to look up those values in the database. The top 3 relevant recipes will
+# then be displayed under the search form.
+# If request method is not POST, only search form is displayed.
 def SearchTool(request):
     form = SearchToolForm(request.POST or None)
     f = open("display/Output.txt", "a")
@@ -56,6 +66,10 @@ def SearchTool(request):
         'form':form
     })
 
+
+# Developed by Khanh Vu
+# A function that takes one recipe name, finds it in the database and return a list of strings in this format:
+# [<recipe_name>, <cost>, <ingredients>, <instructions>]
 def RecipeSubmission(request):
     form = RecipeSubmissionForm(request.POST or None)
     if request.method == 'POST':
@@ -73,6 +87,7 @@ def RecipeSubmission(request):
     return render(request,'display/recipe_submission.html/', {
         'form':form
     })
+
 
 #developed by Jacob Dickson and Ikaika Lee
 def MealPlan(request):
@@ -146,13 +161,17 @@ def MealPlan(request):
         'sunLunch': '',
         'sunDinner': '',
     })
-def GetTextFile(request):
-    return render(request, 'display/Output.txt')
+    
 
+# Developed by Khanh Vu
+# This function responds to "GET /help HTTP/1.1" request to display the Help page.
 def Help(request):
     return render(request,'display/help.html/')
 
 
+# Developed by Khanh Vu
+# This function responds to "GET /download/?file_name=<file_name> HTTP/1.1" request,
+# which allows user to download the file name
 def GetTextFile(request):
     file_name = request.GET.get('file_name')
     with open('display/{}.txt'.format(file_name), 'r') as file:
