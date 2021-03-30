@@ -158,20 +158,3 @@ $ 18
 & 1 1/4 chicken cubes, 1 bulb garlic, Parmesan cheese, 1 pint cherry tomatoes, 1 bunch fresh basil, 1 pack of wooden skewers, Olive oil, salt, pepper
 $ 19 
 : Finely chop basil, garlic cheese, salt and pepper and combine evenly. Slowly add olive oil. Combine raw chicken with pesto and marinate. Soak wooden skewers in water for atleast 30 minutes. Beginning and ending with chicken thread chicken and tomatoes on skewers. Heat grill pan over medium and cook until chicken is cooked through on all sides. 
-
-* Cajun Sausage and Rice Skillet
-& d
-$ 7
-: d
-* Spicy Chicken Burgers
-& abc
-$ 6
-: abc
-* Spicy Chicken Burgers
-& abc
-$ 6
-: abc
-* Spicy Chicken Burgers
-& 2
-$ 4
-: 3

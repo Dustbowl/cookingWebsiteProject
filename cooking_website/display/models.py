@@ -30,18 +30,28 @@ amounts = (
     ('5', '5 Recipes'),
     ('10', '10 Recipes'),
 )
-        
+
+# Developed by      
 class MealPlanForm (forms.Form):
     name = forms.CharField(label="Meal Name")
     day = forms.CharField(label='Day', widget=forms.Select(choices= days))
     meal = forms.CharField(label='Meal', widget=forms.Select(choices= meals))
 
+
+# Developed by Khanh Vu
+# A form where user can look up recipe by selecting price_filter from a dropdown menu and 
+# inputting name and ingredients in textboxes 
+# None of the fields are required in this form.
 class SearchToolForm (forms.Form):
     price_filter = forms.CharField(widget=forms.Select(choices=price_range), required=False)
     name = forms.CharField(label="Name", required=False)
     ingredients = forms.CharField(label="Ingredients",widget=forms.Textarea(), required=False)
     amountRecipes = forms.CharField(label='Amount of Recipes', widget=forms.Select(choices= amounts))
 
+
+# Developed by Khanh Vu
+# A form where user can submit a recipe. 
+# All fields, including cost, name, ingredients, direction are required in this form.
 class RecipeSubmissionForm (forms.Form):
     #cost = forms.CharField(widget=forms.Select(choices=price_range))
     cost = forms.CharField(label="Cost")
