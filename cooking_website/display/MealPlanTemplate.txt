@@ -4,7 +4,7 @@ Monday:
 -Lunch
 
 -Dinner
-Spicy Chicken Burgers
+
 Tuesday:
 -Breakfast
 
@@ -23,7 +23,7 @@ Thursday:
 -Breakfast
 
 -Lunch
-Spicy Chicken Burgers
+
 -Dinner
 
 Friday:
@@ -44,6 +44,6 @@ Sunday:
 -Breakfast
 Spicy Chicken Burgers
 -Lunch
-Spicy Chicken Burgers
--Dinner
 
+-Dinner
+Spicy Chicken Burgers
