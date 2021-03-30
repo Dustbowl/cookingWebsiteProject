@@ -21,6 +21,7 @@ def SearchTool(request):
             price_range = form['price_filter'].data
             name = form['name'].data
             ingredients = form['ingredients'].data
+            amountRecipes = form['amountRecipes'].data
 
             if price_range == 'under_5': #if else statement to convert button value into integer to be compared in the price filter
                 price_range = 5
@@ -38,10 +39,10 @@ def SearchTool(request):
 
             all_recipe_details = []
             details = FindRecipeDetails()
-            details.FindRecipe(recipes)
+            details.FindRecipe(recipes, amountRecipes)
             detailsForOne = FindRecipeDetailsForOneRecipe()
 
-            for i in range (0,5):
+            for i in range (0,int(float(amountRecipes))):
                 all_recipe_details.append(detailsForOne.FindSingleDetails(recipes[i]))
             
             
