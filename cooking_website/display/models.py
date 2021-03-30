@@ -72,6 +72,7 @@ class RecipeSubmissionForm (forms.Form):
     ingredients = forms.CharField(label="Ingredients",widget=forms.Textarea())
     direction = forms.CharField(label="Direction",widget=forms.Textarea())
 
+#developed by Anthony Vuong
 class SearchEngine():
     __recipes = [] #list of recipes names
     __hits = [] #associated list with __recipes with each index containing a number denoting the correlating recipe's relevance
